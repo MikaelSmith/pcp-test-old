@@ -387,7 +387,7 @@ int connect_clients_serially(std::vector<std::shared_ptr<client>> client_ptrs,
     return num_failures;
 }
 
-static const std::string CONNECTION_TEST_CLIENT_TYPE {"CONNECTION_TEST_CLIENT"};
+static const std::string CONNECTION_TEST_CLIENT_TYPE {"agent"};
 
 connection_test_result connection_test::perform_current_run()
 {
@@ -565,6 +565,9 @@ connection_test_result connection_test::perform_current_run()
 
     LOG_INFO("Run #%1% - got Connection Task results; about to close connections",
              current_run_.idx);
+
+    boost::nowide::cout << "Press return to continue..." << std::flush;
+    boost::nowide::cin.get();
 
     // Close connections
 
